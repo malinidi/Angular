@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ProductManagement</title>
+  <title>APM</title>
   <base href="/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <pm-root></pm-root> <!--This pm-root is defined in the app.component.ts as decorative-->
 </body>
 </html>
+
+<!--1. How pm-root is defined inside app-component to Index.html? Is there any import requird
+2. What is the purpose of app.po.ts
+3. app is the root folder, app.module.ts is the root module.
+4. app module contains the bootstrap points to app.component which is first component loads into application.
+  But app module name may be different
+5. There are 2 ways to exposes directive, either declare in the app module or import another module -->

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { ProductListComponent } from './products/ProductList.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
   ],
   declarations: [
     AppComponent,
+    ProductListComponent
   ],
   bootstrap: [AppComponent] //@MLC: This bootstrap indicates the starting component of application.
 })

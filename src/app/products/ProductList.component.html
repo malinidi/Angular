@@ -1,0 +1,58 @@
+<div class='card-header'>
+    <div class='card-header'>
+      <!-- The below is called Interpolation, means accessing the component members(properties or methods) in template-->
+        {{pageTitle}}
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by: </div>
+            <div class='col-md-4'>
+                <input type='text' />
+             </div>
+        </div>
+    </div>
+    <div class='table-responsive'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>
+                <button class="btn btn-primary"
+                 (click)='showOrHideImage()' >
+                 {{showImage ?'Hide':'Show'}} Image
+                </button>
+               </th>
+              <th>Product ID</th>
+              <th>Product</th>
+              <th>Code</th>
+              <th>Available</th>
+              <th>Price</th>
+              <th>5 Star Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ngFor is same as ForEach in the Java-->
+            <!-- let is the keyword introduced in JS from ES2015 onwards-->
+            <!--tr *ngFor='let product in products'></tr-->
+            <!-- for of gives the values where for in gives the index values. -->
+            <tr *ngFor='let product of products'>
+              <td *ngIf='showImage' else >
+                <img [src]='product.imageUrl'
+                title={{product.productNam}}
+                [style.width.px] ='imageWidth'
+                [style.margin.px] ="imageMargin" />
+              </td>
+              <td *ngIf ='!showImage'>               
+              </td>
+               <td>{{product.productId}}</td>
+              <td>{{product.productName}}</td>
+              <td>{{product.productCode}} </td>
+              <td>{{product.releaseDate}}</td>
+              <td>{{product.price }}</td>
+              <td>{{product.starRating }}</td>
+            </tr>
+
+          </tbody>
+        </table>
+    </div>
+
+</div>

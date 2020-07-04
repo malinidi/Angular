@@ -1,17 +1,38 @@
 import {Component} from '@angular/core';
+import {Product} from './Product.interface';
 
 @Component({
     selector: 'pm-products',
     templateUrl: './ProductList.component.html'
 })
 
-export class ProductListComponent{
-    pageTitle : String = "Product List..!";
+export class ProductListComponent implements Product{
+
+    //The interface member variables needs o define again in the implemented class.
+    productId: number;
+    productName: string;
+    productCode: string;
+    releaseDate: string;
+    description: string;
+    price: number;
+    starRating: number;
+    imageUrl: string;
+    //The interface getProduct method should implement, otherwise it gives compile error.
+    getProduct():void
+    {
+
+    }
+  
+  pageTitle : string = "Product List..!";
     imageWidth: number = 30;
     imageMargin: number = 2;
     showImage: boolean = false;
+    listFilter: string = 'cart';
 
-    products: any[]= [
+    //Same like Java Interface type instance holds the implmented Class object.
+    //productObj: Product = new ProductListComponent();
+
+    Product: any[]= [
         {
         "productId": 1,
         "productName": "Leaf Rake",
@@ -46,5 +67,14 @@ export class ProductListComponent{
       showOrHideImage(): void
       {
         this.showImage = !this.showImage;
+      }
+
+      getlistFilter()
+      {
+        return this.listFilter;
+      }
+      setlistFilter(value: string)
+      {
+        this.listFilter=value;
       }
 }

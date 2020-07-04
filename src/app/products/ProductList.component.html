@@ -7,9 +7,14 @@
         <div class='row'>
             <div class='col-md-2'>Filter by: </div>
             <div class='col-md-4'>
-                <input type='text' />
+                <input type='text' [(ngModel)]='listFilter'/>
              </div>
         </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <h4>Filter by:{{listFilter}}</h4>  
+      </div>      
     </div>
     <div class='table-responsive'>
         <table class='table'>
@@ -17,8 +22,8 @@
             <tr>
               <th>
                 <button class="btn btn-primary"
-                 (click)='showOrHideImage()' >
-                 {{showImage ?'Hide':'Show'}} Image
+                 (click)='showOrHideImage()' > <!--This is call event  binding-->
+                 {{showImage ?'Hide':'Show'}} Image <!--Here string contactination -->
                 </button>
                </th>
               <th>Product ID</th>
@@ -35,22 +40,20 @@
             <!--tr *ngFor='let product in products'></tr-->
             <!-- for of gives the values where for in gives the index values. -->
             <tr *ngFor='let product of products'>
-              <td *ngIf='showImage' else >
-                <img [src]='product.imageUrl'
+              <td >
+                <img *ngIf='showImage' 
+                [src]='product.imageUrl'
                 title={{product.productNam}}
                 [style.width.px] ='imageWidth'
                 [style.margin.px] ="imageMargin" />
               </td>
-              <td *ngIf ='!showImage'>               
-              </td>
                <td>{{product.productId}}</td>
-              <td>{{product.productName}}</td>
+              <td>{{product.productName | lowercase}}</td>
               <td>{{product.productCode}} </td>
               <td>{{product.releaseDate}}</td>
               <td>{{product.price }}</td>
               <td>{{product.starRating }}</td>
             </tr>
-
           </tbody>
         </table>
     </div>
